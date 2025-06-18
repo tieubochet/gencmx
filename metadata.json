@@ -1,0 +1,5 @@
+{
+  "name": "Trả lời X",
+  "description": "An application that uses Gemini API to generate contextual reply suggestions for a given article content, providing responses in the original language and Vietnamese.",
+  "requestFramePermissions": []
+}
