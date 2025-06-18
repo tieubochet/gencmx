@@ -60,13 +60,13 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
                         {copiedOriginal ? 'Đã chép!' : 'Sao chép'}
                     </button>
                 </div>
-                <p className="text-gray-800 leading-relaxed break-words whitespace-pre-wrap bg-white p-2 rounded border border-gray-200 text-m">
+                <p className="text-gray-800 leading-relaxed break-words whitespace-pre-wrap bg-white p-2 rounded border border-gray-200 text-lg">
                     {reply.originalReply}
                 </p>
             </div>
 
             <div>
-                <p className="text-gray text-m">
+                <p className="text-gray text-m opacity-75">
                     Dịch: {reply.vietnameseTranslation}
                 </p>
             </div>
