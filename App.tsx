@@ -51,7 +51,6 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
             
             <div className="mb-3">
                 <div className="flex justify-between items-center mb-1">
-                    <span className="font-semibold text-gray-700 text-sm">Bản gốc:</span>
                     <button 
                         onClick={() => handleCopyToClipboard(reply.originalReply, 'original')}
                         className={`text-xs ${copiedOriginal ? 'bg-green-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700'} font-medium py-1 px-2 rounded transition-all duration-200 min-w-[70px]`}
@@ -67,9 +66,7 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
             </div>
 
             <div>
-                 <p className="text-red-600 text-lg opacity-90">
-                    <span className="font-semibold text-gray-700 text-lg">Bản dịch:</span> {reply.vietnameseTranslation}
-                </p>
+                 <p className="text-red-600 text-lg opacity-90"> {reply.vietnameseTranslation}</p>
             </div>
         </div>
     );
@@ -172,9 +169,6 @@ const App: React.FC = () => {
 
                         {replySuggestions.length > 0 && (
                             <div>
-                                <h2 className="text-xl font-semibold text-gray-800 mb-3 pb-2 border-b border-gray-200">
-                                    Các gợi ý trả lời từ AI:
-                                </h2>
                                 <div className="space-y-4 max-h-[60vh] md:max-h-[calc(100vh-280px)] overflow-y-auto pr-2 custom-scrollbar">
                                     {replySuggestions.map((reply, index) => (
                                         <ReplyCard key={index} reply={reply} index={index} />
@@ -185,9 +179,6 @@ const App: React.FC = () => {
                     </div>
                 </div>
 
-                 <footer className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-500">
-                    Powered by Gemini API
-                </footer>
             </div>
         </div>
     );
