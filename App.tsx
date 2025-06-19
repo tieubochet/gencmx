@@ -56,6 +56,7 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
                         onClick={() => handleCopyToClipboard(reply.originalReply, 'original')}
                         className={`text-xs ${copiedOriginal ? 'bg-green-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700'} font-medium py-1 px-2 rounded transition-all duration-200 min-w-[70px]`}
                         title="Sao chép bản gốc"
+                        aria-label={copiedOriginal ? "Đã sao chép bản gốc" : "Sao chép bản gốc"}
                     >
                         {copiedOriginal ? 'Đã chép!' : 'Sao chép'}
                     </button>
@@ -66,8 +67,8 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
             </div>
 
             <div>
-                <p className="text-gray text-m opacity-75">
-                    Dịch: {reply.vietnameseTranslation}
+                 <p className="text-gray-600 text-sm opacity-90">
+                    <span className="font-semibold text-gray-700 text-sm">Bản dịch:</span> {reply.vietnameseTranslation}
                 </p>
             </div>
         </div>
@@ -83,8 +84,6 @@ const App: React.FC = () => {
 
     const handleGenerateReply = useCallback(async () => {
         setError('');
-        // Do not clear previous suggestions immediately, clear them only on successful new generation or if explicitly desired
-        // setReplySuggestions([]); 
         if (!articleContent.trim()) {
             setError('Vui lòng nhập nội dung bài viết.');
             return;
@@ -103,6 +102,13 @@ const App: React.FC = () => {
         }
     }, [articleContent]);
 
+    const handleResetContent = useCallback(() => {
+        setArticleContent('');
+        // Optionally, also clear suggestions and error if a full reset is desired
+        // setReplySuggestions([]);
+        // setError('');
+    }, []);
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 to-sky-100 flex flex-col items-center justify-center p-4 selection:bg-blue-200">
             <div className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-4xl border border-gray-200 transform transition-all duration-500">
@@ -110,14 +116,28 @@ const App: React.FC = () => {
                 <div className="md:flex md:space-x-6">
                     {/* Left Column */}
                     <div className="md:w-2/5 mb-6 md:mb-0 flex flex-col">
-  
-                        <textarea
-                            id="articleContent"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-y min-h-[200px] sm:min-h-[250px] text-gray-800 placeholder-gray-400 shadow-sm flex-grow"
-                            placeholder="Dán nội dung bài viết vào đây... Ví dụ: 'Bài viết này thảo luận về tầm quan trọng của trí tuệ nhân tạo...'"
-                            value={articleContent}
-                            onChange={(e) => setArticleContent(e.target.value)}
-                        ></textarea>
+                        <div className="relative flex-grow">
+                            <textarea
+                                id="articleContent"
+                                aria-label="Nội dung bài viết"
+                                className="w-full h-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-y min-h-[200px] sm:min-h-[250px] text-gray-800 placeholder-gray-400 shadow-sm"
+                                placeholder="Dán nội dung bài viết vào đây... Ví dụ: 'Bài viết này thảo luận về tầm quan trọng của trí tuệ nhân tạo...'"
+                                value={articleContent}
+                                onChange={(e) => setArticleContent(e.target.value)}
+                            ></textarea>
+                            {articleContent && (
+                                <button
+                                    onClick={handleResetContent}
+                                    title="Xóa nội dung"
+                                    aria-label="Xóa nội dung bài viết"
+                                    className="absolute top-2 right-2 p-1.5 bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-800 rounded-full transition-colors duration-200"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            )}
+                        </div>
                         
                         <button
                             onClick={handleGenerateReply}
