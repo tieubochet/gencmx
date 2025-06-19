@@ -24,8 +24,7 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Hãy gợi ý 5 bình luận ngắn gọn, súc tích, vui vẻ hài hước, hấp dẫn mang phong cách X và có cùng ngôn ngữ với bài viết gốc sau mà không nói thêm bất cứ điều gì khác ngoài bình luận đó:
-
+Hãy gợi ý 5 bình luận súc tích, đúng chủ đề, thú vị, mang phong cách X nhưng phải giống người thật và có cùng ngôn ngữ với bài viết gốc sau mà không nói thêm bất cứ điều gì khác ngoài bình luận đó:
 Vui lòng trả lời dưới định dạng JSON sau:
 [
   {

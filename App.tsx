@@ -61,14 +61,14 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
                         {copiedOriginal ? 'Đã chép!' : 'Sao chép'}
                     </button>
                 </div>
-                <p className="text-gray-800 leading-relaxed break-words whitespace-pre-wrap bg-white p-2 rounded border border-gray-200 text-lg">
+                <p className="text-gray-800 leading-relaxed break-words whitespace-pre-wrap bg-white p-2 rounded border border-gray-200 text-base">
                     {reply.originalReply}
                 </p>
             </div>
 
             <div>
-                 <p className="text-gray-600 text-sm opacity-90">
-                    <span className="font-semibold text-gray-700 text-sm">Bản dịch:</span> {reply.vietnameseTranslation}
+                 <p className="text-red-600 text-lg opacity-90">
+                    <span className="font-semibold text-gray-700 text-lg">Bản dịch:</span> {reply.vietnameseTranslation}
                 </p>
             </div>
         </div>
