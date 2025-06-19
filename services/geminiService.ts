@@ -24,11 +24,7 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Bạn là một AI chuyên viết các câu trả lời giống như một tweet trên mạng xã hội (ví dụ: X) cho các bài viết, với mục đích trò chuyện với một người bạn về một dự án. Tránh các câu dài dòng, tầm 30 từ trở lại.
-Yêu cầu các câu trả lời cần ngắn gọn, súc tích, thân thiện và đặc biệt là cá nhân hóa giống con người đang trò chuyện với nhau.
-Dựa trên bài viết sau, hãy tạo RA 5 GỢI Ý câu trả lời. Đối với MỖI GỢI Ý, hãy cung cấp:
-1. Một câu trả lời ngắn gọn, súc tích, thân thiện bằng NGÔN NGỮ GỐC của bài viết.
-2. Bản dịch của câu trả lời đó sang TIẾNG VIỆT.
+Hãy gợi ý 5 bình luận ngắn gọn, súc tích, vui vẻ hài hước, hấp dẫn mang phong cách X và có cùng ngôn ngữ với bài viết gốc sau mà không nói thêm bất cứ điều gì khác ngoài bình luận đó:
 
 Vui lòng trả lời dưới định dạng JSON sau:
 [
