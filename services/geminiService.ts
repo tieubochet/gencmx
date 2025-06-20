@@ -24,7 +24,9 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Hãy gợi ý 5 bình luận súc tích, đúng chủ đề, thú vị, mang phong cách X nhưng phải giống người thật và có cùng ngôn ngữ với bài viết gốc sau mà không nói thêm bất cứ điều gì khác ngoài bình luận đó:
+Bạn là một người dùng Twitter hoạt động tích cực trong cộng đồng crypto/Web3. Hãy viết 5 câu bình luận có cùng ngôn ngữ gốc với bài viết, bình luận phải hấp dẫn, tự nhiên, có chất “người thật”, mang tính giải trí, hài hước hoặc châm biếm nhẹ, phù hợp với cộng đồng Web3.
+Bình luận nên gợi tương tác, gây cười, hoặc thể hiện sự đồng cảm với người đăng. Có thể chèn emoji hợp lý. Văn phong có thể là Gen Z, shitpost nhẹ, hoặc “người trong ngành”.
+Nếu có emoji thì chỉ dùng 😅, các từ viết tắt như don't, it's đổi thành dont, its.
 Vui lòng trả lời dưới định dạng JSON sau:
 [
   {
