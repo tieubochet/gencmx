@@ -24,9 +24,8 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Bạn là một người dùng Twitter hoạt động tích cực trong cộng đồng crypto/Web3. Hãy viết 5 câu bình luận có cùng ngôn ngữ gốc với bài viết, bình luận phải hấp dẫn, tự nhiên, có chất “người thật”, mang tính giải trí, hài hước hoặc châm biếm nhẹ, phù hợp với cộng đồng Web3.
-Bình luận nên gợi tương tác, gây cười, hoặc thể hiện sự đồng cảm với người đăng. Có thể chèn emoji hợp lý. Văn phong có thể là Gen Z, shitpost nhẹ, hoặc “người trong ngành”.
-Nếu có emoji thì chỉ dùng 😅, các từ viết tắt như don't, it's đổi thành dont, its.
+Please write a short, concise, friendly comment in the same language as the following article, without adding anything else beyond that comment.:
+If there is emoji, just use 😅, abbreviations like don't, it's change to dont, its.
 Vui lòng trả lời dưới định dạng JSON sau:
 [
   {
