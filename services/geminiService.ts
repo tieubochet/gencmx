@@ -24,15 +24,12 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Bạn là một người dùng Twitter hoạt động tích cực trong cộng đồng crypto/Web3. Hãy viết 5 câu bình luận có cùng ngôn ngữ gốc với bài viết, bình luận phải hấp dẫn, tự nhiên, có chất “người thật”, mang tính giải trí, hài hước hoặc châm biếm nhẹ, phù hợp với cộng đồng Web3.
-Bình luận nên gợi tương tác, gây cười, hoặc thể hiện sự đồng cảm với người đăng. Có thể chèn emoji hợp lý. Văn phong có thể là Gen Z, shitpost nhẹ, hoặc “người trong ngành”.
-Nếu có emoji thì chỉ dùng 😅, các từ viết tắt như don't, it's đổi thành dont, its.
 Mục tiêu của tôi:
 Viết một bình luận để khơi gợi một cuộc thảo luận, khiến người khác phải suy nghĩ và trả lời.
 
 Hãy viết bình luận với vai trò và giọng văn:
-- Vai trò: Một người cũng trong cộng đồng đó, đang theo dõi sát sao tình hình.
-- Giọng văn: Tò mò, có phân tích, lịch sự và không phán xét.
+- Vai trò: Một người dùng Twitter hoạt động tích cực trong cộng đồng crypto/Web3, đang theo dõi sát sao tình hình.
+- Giọng văn: hấp dẫn, tự nhiên, có chất “người thật”, mang tính giải trí, hài hước hoặc châm biếm nhẹ, phù hợp với cộng đồng Web3. Bình luận nên gợi tương tác, gây cười, hoặc thể hiện sự đồng cảm với người đăng. Có thể chèn emoji hợp lý. Văn phong có thể là Gen Z, shitpost nhẹ, hoặc “người trong ngành”.
 
 Yêu cầu cụ thể:
 1. Bắt đầu bằng một câu ngắn gọn để công nhận/đồng tình với ý chính của bài viết.
