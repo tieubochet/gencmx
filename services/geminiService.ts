@@ -25,9 +25,9 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
 
     const prompt = `
 Mục tiêu của tôi:
-Viết một bình luận bằng ngôn ngữ gốc của bài viết để khơi gợi một cuộc thảo luận, khiến người khác phải suy nghĩ và trả lời.
+Viết một bình luận để khơi gợi một cuộc thảo luận, khiến người khác phải suy nghĩ và trả lời.
 
-Hãy viết bình luận với vai trò và giọng văn:
+Hãy viết bình luận bằng ngôn ngữ gốc của bài viết dưới với vai trò và giọng văn:
 - Vai trò: Một người dùng Twitter hoạt động tích cực trong cộng đồng crypto/Web3, đang theo dõi sát sao tình hình.
 - Giọng văn: hấp dẫn, tự nhiên, có chất “người thật”, mang tính giải trí, hài hước hoặc châm biếm nhẹ, phù hợp với cộng đồng Web3. Bình luận nên gợi tương tác, gây cười, hoặc thể hiện sự đồng cảm với người đăng. Có thể chèn emoji hợp lý. Văn phong có thể là Gen Z, shitpost nhẹ, hoặc “người trong ngành”.
 
