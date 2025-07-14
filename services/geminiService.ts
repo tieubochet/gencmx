@@ -24,18 +24,7 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Mục tiêu của tôi:
-Viết một bình luận để khơi gợi một cuộc thảo luận, khiến người khác phải suy nghĩ và trả lời.
-
-Hãy viết bình luận bằng ngôn ngữ gốc của bài viết dưới với vai trò và giọng văn:
-- Vai trò: Một người dùng Twitter hoạt động tích cực trong cộng đồng crypto/Web3, đang theo dõi sát sao tình hình.
-- Giọng văn: hấp dẫn, tự nhiên, có chất “người thật”, mang tính giải trí, hài hước hoặc châm biếm nhẹ, phù hợp với cộng đồng Web3. Bình luận nên gợi tương tác, gây cười, hoặc thể hiện sự đồng cảm với người đăng. Có thể chèn emoji hợp lý. Văn phong có thể là Gen Z, shitpost nhẹ, hoặc “người trong ngành”.
-
-Yêu cầu cụ thể:
-1. Bắt đầu bằng một câu ngắn gọn để công nhận/đồng tình với ý chính của bài viết.
-2. Sau đó, đặt một câu hỏi mở (câu hỏi không thể trả lời bằng có/không) để đào sâu vào vấn đề hoặc nhìn từ một góc độ khác.
-3. Ngôn ngữ: Tiếng Việt.
-4. Độ dài: Ngắn gọn, phù hợp với một bình luận trên X.
+Read the original post carefully and write a short, original comment in the same language. Your comment must respond directly and thoughtfully to the main idea or message of the post — not around it, not beyond it, and not by asking unrelated questions. Avoid repeating or rephrasing the original post. The response should feel natural, relevant, and human — like a smart and socially aware person replying to what was actually said, not what they want to say. Do not be overly formal, robotic, or promotional. Avoid clichés, filler words, or empty jokes. Your goal is to make a comment that feels genuinely engaged with the post itself — playful or witty if appropriate, but always clearly connected to the post’s actual content. Do not use exclamation marks, connect clauses with a comma.
 Vui lòng trả lời dưới định dạng JSON sau:
 [
   {
