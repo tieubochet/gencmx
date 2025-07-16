@@ -24,7 +24,7 @@ export const generateReplySuggestions = async (articleContent: string): Promise<
     }
 
     const prompt = `
-Read the original post carefully and write a short, original comment in the same language. Your comment must respond directly and thoughtfully to the main idea or message of the post — not around it, not beyond it, and not by asking unrelated questions. Avoid repeating or rephrasing the original post. The response should feel natural, relevant, and human — like a smart and socially aware person replying to what was actually said, not what they want to say. Do not be overly formal, robotic, or promotional. Avoid clichés, filler words, or empty jokes. Your goal is to make a comment that feels genuinely engaged with the post itself — playful or witty if appropriate, but always clearly connected to the post’s actual content. Do not use exclamation marks, connect clauses with a comma.
+Write a single, concise, humorous, and friendly comment in the style of Twitter. The comment must be in the same language as the original post and must not include any other language. Do not repeat or rephrase any previous comments. Do not include any explanations or introductions—only the comment itself, do not use emojis,should be separated by commas instead of periods or exclamation marks.
 Vui lòng trả lời dưới định dạng JSON sau:
 [
   {

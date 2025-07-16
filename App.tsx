@@ -66,7 +66,7 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
             </div>
 
             <div>
-                 <p className="text-red-600 text-lg opacity-90"> {reply.vietnameseTranslation}</p>
+                 <p className="text-red-500 text-base opacity-90"> {reply.vietnameseTranslation}</p>
             </div>
         </div>
     );
