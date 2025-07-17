@@ -18,7 +18,7 @@ if (!API_KEY) {
 }
 
 const ai = new GoogleGenAI({ apiKey: API_KEY! });
-const MODEL_NAME = "gemini-2.5-pro";
+const MODEL_NAME = "gemini-2.5-progemini-2.5-flash-lite-preview-06-17";
 
 // --- HÀM CHÍNH ĐÃ ĐƯỢC CẬP NHẬT THEO YÊU CẦU ---
 export const generateReplySuggestions = async (
