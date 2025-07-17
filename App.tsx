@@ -1,9 +1,9 @@
-
 import React, { useState, useCallback } from 'react';
 import { ReplySuggestion } from './types';
-import { generateReplySuggestions } from './services/geminiService';
+// Import thêm "CommentStyle" để sử dụng type an toàn
+import { generateReplySuggestions, CommentStyle } from './services/geminiService';
 
-// LoadingSpinner component defined outside App to prevent re-creation on re-renders
+// LoadingSpinner component (không đổi)
 const LoadingSpinner: React.FC = () => (
     <div className="flex items-center justify-center">
         <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
@@ -14,7 +14,7 @@ const LoadingSpinner: React.FC = () => (
     </div>
 );
 
-// ReplyCard component defined outside App
+// ReplyCard component (không đổi)
 interface ReplyCardProps {
     reply: ReplySuggestion;
     index: number;
@@ -73,11 +73,17 @@ const ReplyCard: React.FC<ReplyCardProps> = ({ reply, index }) => {
 };
 
 
+// === CÁC THAY ĐỔI CHÍNH NẰM TRONG COMPONENT APP NÀY ===
+
 const App: React.FC = () => {
     const [articleContent, setArticleContent] = useState<string>('');
     const [replySuggestions, setReplySuggestions] = useState<ReplySuggestion[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
+    
+    // **THAY ĐỔI 1: Thêm state để lưu trữ style được chọn**
+    // Đặt 'supportive' làm giá trị mặc định.
+    const [selectedStyle, setSelectedStyle] = useState<CommentStyle>('supportive');
 
     const handleGenerateReply = useCallback(async () => {
         setError('');
@@ -88,23 +94,30 @@ const App: React.FC = () => {
 
         setIsLoading(true);
         try {
-            const suggestions = await generateReplySuggestions(articleContent);
+            // **THAY ĐỔI 2: Truyền `selectedStyle` làm tham số thứ hai**
+            const suggestions = await generateReplySuggestions(articleContent, selectedStyle);
             setReplySuggestions(suggestions);
         } catch (err: any) {
             setError(err.message || 'Đã xảy ra lỗi không xác định.');
-            setReplySuggestions([]); // Clear suggestions on error
+            setReplySuggestions([]);
             console.error('Error generating replies:', err);
         } finally {
             setIsLoading(false);
         }
-    }, [articleContent]);
+    // **THAY ĐỔI 3: Thêm `selectedStyle` vào dependency array của useCallback**
+    }, [articleContent, selectedStyle]);
 
     const handleResetContent = useCallback(() => {
         setArticleContent('');
-        // Optionally, also clear suggestions and error if a full reset is desired
-        // setReplySuggestions([]);
-        // setError('');
     }, []);
+
+    // Danh sách các tùy chọn style để render radio buttons
+    const styleOptions: { value: CommentStyle; label: string }[] = [
+        { value: 'supportive', label: 'Ủng hộ' },
+        { value: 'humorous', label: 'Hài hước' },
+        { value: 'inquisitive', label: 'Hỏi đáp' },
+        { value: 'analytical', label: 'Phân tích' },
+    ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 to-sky-100 flex flex-col items-center justify-center p-4 selection:bg-blue-200">
@@ -118,7 +131,7 @@ const App: React.FC = () => {
                                 id="articleContent"
                                 aria-label="Nội dung bài viết"
                                 className="w-full h-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-y min-h-[200px] sm:min-h-[250px] text-gray-800 placeholder-gray-400 shadow-sm"
-                                placeholder="Dán nội dung bài viết vào đây... Ví dụ: 'Bài viết này thảo luận về tầm quan trọng của trí tuệ nhân tạo...'"
+                                placeholder="Dán nội dung bài viết vào đây..."
                                 value={articleContent}
                                 onChange={(e) => setArticleContent(e.target.value)}
                             ></textarea>
@@ -135,6 +148,29 @@ const App: React.FC = () => {
                                 </button>
                             )}
                         </div>
+
+                        {/* **THAY ĐỔI 4: Thêm khối giao diện cho các nút Radio** */}
+                        <div className="mt-4">
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Chọn văn phong trả lời:
+                            </label>
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                                {styleOptions.map((option) => (
+                                    <label key={option.value} htmlFor={option.value} className="flex items-center space-x-2 cursor-pointer p-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
+                                        <input
+                                            type="radio"
+                                            id={option.value}
+                                            name="commentStyle"
+                                            value={option.value}
+                                            checked={selectedStyle === option.value}
+                                            onChange={() => setSelectedStyle(option.value)}
+                                            className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                                        />
+                                        <span className="text-sm text-gray-800">{option.label}</span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
                         
                         <button
                             onClick={handleGenerateReply}
@@ -145,7 +181,7 @@ const App: React.FC = () => {
                         </button>
                     </div>
 
-                    {/* Right Column */}
+                    {/* Right Column (Không đổi) */}
                     <div className="md:w-3/5">
                         {error && (
                             <div className="p-3 bg-red-100 border-l-4 border-red-500 text-red-700 rounded-md text-sm shadow mb-4" role="alert">
@@ -156,7 +192,7 @@ const App: React.FC = () => {
 
                         {!error && !isLoading && replySuggestions.length === 0 && !articleContent && (
                              <div className="p-4 bg-blue-50 border border-blue-200 text-blue-700 rounded-md text-sm shadow text-center">
-                                <p>Nhập nội dung bài viết ở cột bên trái và nhấn nút "Tạo Gợi Ý" để xem kết quả tại đây.</p>
+                                <p>Nhập nội dung bài viết, chọn văn phong và nhấn nút "Tạo Gợi Ý" để xem kết quả tại đây.</p>
                             </div>
                         )}
                         
