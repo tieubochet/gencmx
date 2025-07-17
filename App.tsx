@@ -83,7 +83,7 @@ const App: React.FC = () => {
     
     // **THAY ĐỔI 1: Thêm state để lưu trữ style được chọn**
     // Đặt 'supportive' làm giá trị mặc định.
-    const [selectedStyle, setSelectedStyle] = useState<CommentStyle>('supportive');
+    const [selectedStyle, setSelectedStyle] = useState<CommentStyle>('humorous');
 
     const handleGenerateReply = useCallback(async () => {
         setError('');
