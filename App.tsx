@@ -113,9 +113,9 @@ const App: React.FC = () => {
 
     // Danh sách các tùy chọn style để render radio buttons
     const styleOptions: { value: CommentStyle; label: string }[] = [
-        { value: 'supportive', label: 'Ủng hộ' },
-        { value: 'humorous', label: 'Hài hước' },
-        { value: 'inquisitive', label: 'Hỏi đáp' },
+        { value: 'humorous', label: 'Chuẩn, hay xài' },
+        { value: 'supportive', label: 'Ngắn gọn' },
+        { value: 'inquisitive', label: 'Không emoji' },
         { value: 'analytical', label: 'Phân tích' },
     ];
 
