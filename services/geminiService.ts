@@ -20,7 +20,7 @@ if (!API_KEY) {
 const ai = new GoogleGenAI({ apiKey: API_KEY! });
 const MODEL_NAME = "gemini-2.5-pro";
 
-// --- HÀM CHÍNH ĐÃ ĐƯỢC CẬP NHẬT THEO YÊU CẦU ---
+
 export const generateReplySuggestions = async (
     articleContent: string,
     style: CommentStyle 
