@@ -8,7 +8,7 @@ import { ReplySuggestion } from '../types';
 // Chúng ta export nó để frontend có thể dùng.
 export type CommentStyle = 'humorous' | 'supportive' | 'inquisitive' | 'analytical';
 
-// --- PHẦN CẤU HÌNH GIỮ NGUYÊN ---
+
 const API_KEY = process.env.API_KEY;
 
 if (!API_KEY) {
