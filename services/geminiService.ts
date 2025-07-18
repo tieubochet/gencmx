@@ -23,7 +23,7 @@ const MODEL_NAME = "gemini-2.5-pro";
 // --- HÀM CHÍNH ĐÃ ĐƯỢC CẬP NHẬT THEO YÊU CẦU ---
 export const generateReplySuggestions = async (
     articleContent: string,
-    style: CommentStyle // Thêm tham số 'style' để nhận lựa chọn từ người dùng
+    style: CommentStyle 
 ): Promise<ReplySuggestion[]> => {
 
     if (!articleContent.trim()) {
