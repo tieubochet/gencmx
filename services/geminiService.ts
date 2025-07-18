@@ -39,8 +39,6 @@ export const generateReplySuggestions = async (
         analytical: `Write a single, concise, and analytical comment that offers a sharp insight or a key takeaway from the article. The comment must be in the same language as the original post and must not include any other language. Do not include any explanations or introductions—only the comment itself, do not use emojis,should be separated by commas instead of periods or exclamation marks.`
     };
 
-    // -- BƯỚC 2: Xây dựng prompt cuối cùng --
-    // Lấy chỉ dẫn tương ứng với style người dùng chọn và ghép với phần còn lại.
     const prompt = `
 ${styleInstructions[style]}
 
