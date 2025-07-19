@@ -4,8 +4,6 @@ import { GoogleGenAI, GenerateContentResponse, Content } from "@google/genai";
 // export interface ReplySuggestion { originalReply: string; vietnameseTranslation: string; }
 import { ReplySuggestion } from '../types';
 
-// Định nghĩa các style bình luận mà người dùng có thể chọn.
-// Chúng ta export nó để frontend có thể dùng.
 export type CommentStyle = 'humorous' | 'supportive' | 'inquisitive' | 'analytical';
 
 
