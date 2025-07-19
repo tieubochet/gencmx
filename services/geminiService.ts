@@ -63,7 +63,7 @@ Bài viết:
 "${articleContent}"
 `;
 
-    // --- PHẦN LOGIC GỌI API VÀ XỬ LÝ LỖI GIỮ NGUYÊN HOÀN TOÀN ---
+   
     const chatHistory: Content[] = [{ role: "user", parts: [{ text: prompt }] }];
 
     try {
