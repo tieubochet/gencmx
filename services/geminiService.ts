@@ -1,7 +1,4 @@
 import { GoogleGenAI, GenerateContentResponse, Content } from "@google/genai";
-// Giả sử bạn có file types.ts định nghĩa ReplySuggestion
-// Nếu không, bạn có thể định nghĩa trực tiếp ở đây:
-// export interface ReplySuggestion { originalReply: string; vietnameseTranslation: string; }
 import { ReplySuggestion } from '../types';
 
 export type CommentStyle = 'humorous' | 'supportive' | 'inquisitive' | 'analytical';
