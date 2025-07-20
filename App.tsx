@@ -177,7 +177,7 @@ const App: React.FC = () => {
                             className="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
                             disabled={isLoading}
                         >
-                            {isLoading ? <LoadingSpinner /> : 'Tạo 5 Gợi ý Trả lời'}
+                            {isLoading ? <LoadingSpinner /> : 'Tạo Gợi ý Trả lời'}
                         </button>
                     </div>
 
