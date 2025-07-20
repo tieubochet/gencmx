@@ -56,6 +56,26 @@ Vui lòng trả lời dưới định dạng JSON sau:
   {
     "originalReply": "Gợi ý 5 bằng ngôn ngữ gốc",
     "vietnameseTranslation": "Bản dịch tiếng Việt của gợi ý 5"
+  },
+  {
+    "originalReply": "Gợi ý 6 bằng ngôn ngữ gốc",
+    "vietnameseTranslation": "Bản dịch tiếng Việt của gợi ý 6"
+  },
+  {
+    "originalReply": "Gợi ý 7 bằng ngôn ngữ gốc",
+    "vietnameseTranslation": "Bản dịch tiếng Việt của gợi ý 7"
+  },
+  {
+    "originalReply": "Gợi ý 8 bằng ngôn ngữ gốc",
+    "vietnameseTranslation": "Bản dịch tiếng Việt của gợi ý 8"
+  },
+  {
+    "originalReply": "Gợi ý 9 bằng ngôn ngữ gốc",
+    "vietnameseTranslation": "Bản dịch tiếng Việt của gợi ý 9"
+  },
+  {
+    "originalReply": "Gợi ý 10 bằng ngôn ngữ gốc",
+    "vietnameseTranslation": "Bản dịch tiếng Việt của gợi ý 10"
   }
 ]
 
