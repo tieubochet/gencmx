@@ -201,7 +201,7 @@ const App: React.FC = () => {
                                 </label>
                                 <label htmlFor="mode-summary" className="flex-1 flex items-center space-x-2 cursor-pointer p-2 rounded-md hover:bg-gray-100 transition-colors duration-200">
                                     <input type="radio" id="mode-summary" name="appMode" value="summary" checked={mode === 'summary'} onChange={() => setMode('summary')} className="h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
-                                    <span className="text-sm text-gray-800">Tóm tắt nội dung</span>
+                                    <span className="text-sm text-gray-800">Tóm tắt </span>
                                 </label>
                             </div>
                         </div>
