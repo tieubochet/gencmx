@@ -169,7 +169,6 @@ Nhiệm vụ của bạn là đọc kỹ bài viết gốc được cung cấp, 
 6.  **Câu chốt:** Kết thúc bằng một câu truyền cảm hứng, khơi gợi khát khao và hành động. Bắt đầu bằng emoji 🚀 hoặc 🌟.
 
 7.  **Hashtags:** Tự động tạo 5-7 hashtag liên quan nhất, trong đó luôn phải có #EduChances, #DuHoc[Tên_nước], và các từ khóa chính của ngành học.
-8. Do nền tảng facebook không hỗ trợ ngôn ngữ markdown nên hãy trả về 1 bài viết có định dạng được facebook hỗ trợ.
 Bây giờ, hãy áp dụng prompt này cho nội dung gốc dưới đây:
     "${articleContent}"
     `;
