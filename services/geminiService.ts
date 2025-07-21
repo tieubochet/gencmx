@@ -12,7 +12,7 @@ if (!API_KEY) {
 }
 
 const ai = new GoogleGenAI({ apiKey: API_KEY! });
-const MODEL_NAME = "gemini-1.5-pro-latest"; // Có thể đổi lại model cũ nếu muốn
+const MODEL_NAME = "gemini-2.5-pro"; // Có thể đổi lại model cũ nếu muốn
 
 // === HÀM GỢI Ý TRẢ LỜI: ĐÃ SỬA LỖI ===
 export const generateReplySuggestions = async (
