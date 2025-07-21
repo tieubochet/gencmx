@@ -13,7 +13,7 @@ if (!API_KEY) {
 
 // Khởi tạo một lần duy nhất
 const ai = new GoogleGenAI({ apiKey: API_KEY! });
-const MODEL_NAME = "gemini-1.5-pro-latest"; // Sử dụng model mới nhất
+const MODEL_NAME = "gemini-2.5-pro"; // Sử dụng model mới nhất
 
 // === HÀM CŨ: GIỮ NGUYÊN KHÔNG ĐỔI ===
 export const generateReplySuggestions = async (
