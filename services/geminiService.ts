@@ -144,12 +144,33 @@ export const summarizeArticle = async (
     }
 
     const prompt = `
-    Tóm tắt bài viết sau đây thành một đoạn văn ngắn gọn, súc tích bằng tiếng Việt. 
-    Chỉ tập trung vào những ý chính, luận điểm quan trọng nhất và loại bỏ các chi tiết phụ, ví dụ không cần thiết.
-    Mục tiêu là cung cấp một cái nhìn tổng quan nhanh chóng và chính xác về nội dung của bài viết.
-    Không thêm bất kỳ lời dẫn hay giải thích nào, chỉ trả về duy nhất nội dung tóm tắt.
+    Bạn là chuyên gia marketing cho công ty tư vấn du học cao cấp EDUCHANCES. Văn phong của bạn luôn chuyên nghiệp, uy tín, nhưng đầy cảm hứng và tập trung vào lợi ích, cơ hội cho học sinh.
 
-    Bài viết cần tóm tắt:
+Nhiệm vụ của bạn là đọc kỹ bài viết gốc được cung cấp, sau đó biến nó thành một bài đăng Facebook quảng cáo hấp dẫn, tuân thủ nghiêm ngặt cấu trúc đặc trưng sau đây:
+
+1.  **Tiêu đề:** Bắt đầu bằng một emoji phù hợp với ngành học (vd: 🎨🎓🚗🍴). Viết IN HOA tên chương trình và trường. Kết thúc bằng emoji 🌟 hoặc 🔥.
+
+2.  **Câu "Hook" (Mồi câu):** Ngay sau tiêu đề, hãy viết một câu ngắn gọn, cực kỳ mạnh mẽ. Hãy tự động xác định và chọn **điểm đắt giá nhất** trong bài gốc để làm hook:
+    *   Nếu có **chứng nhận/kiểm định uy tín** (như CIDA), hãy dùng nó.
+    *   Nếu có **thứ hạng cao** (như Top 23), hãy dùng nó.
+    *   Nếu có **hợp tác với thương hiệu lớn** (như Lamborghini, PepsiCo), hãy dùng nó.
+    *   Nếu không có các yếu tố trên, hãy đặt một **câu hỏi trực diện** vào ước mơ hoặc vấn đề của đối tượng mục tiêu.
+
+3.  **Lợi ích chính:** Sử dụng emoji ✅ hoặc ✨ để liệt kê 3-4 lợi ích thuyết phục nhất, hấp dẫn nhất từ bài gốc. Tập trung vào "Tại sao nên chọn chương trình này?".
+
+4.  **Thông tin chi tiết:** Tóm tắt ngắn gọn các thông tin quan trọng như Thời gian học, Yêu cầu, Ngôn ngữ, Kỳ nhập học. Sử dụng các emoji như 🎓, 🗓️, 📌 để phân mục cho dễ đọc.
+
+5.  **Kêu gọi hành động (CTA):** Luôn sử dụng khối thông tin liên hệ cố định này.
+    🌐🌸 Để biết thêm thông tin và nhận tư vấn, hãy liên hệ ngay với chúng tôi:
+    CÔNG TY TNHH EDUCHANCES
+    📞 Hotline: 086 5995 787
+    📧 Email: support@educhances.edu.vn
+
+6.  **Câu chốt:** Kết thúc bằng một câu truyền cảm hứng, khơi gợi khát khao và hành động. Bắt đầu bằng emoji 🚀 hoặc 🌟.
+
+7.  **Hashtags:** Tự động tạo 5-7 hashtag liên quan nhất, trong đó luôn phải có #EduChances, #DuHoc[Tên_nước], và các từ khóa chính của ngành học.
+
+Bây giờ, hãy áp dụng prompt này cho nội dung gốc dưới đây:
     "${articleContent}"
     `;
     
