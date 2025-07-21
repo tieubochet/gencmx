@@ -162,7 +162,7 @@ const App: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 to-sky-100 flex flex-col items-center justify-center p-4 selection:bg-blue-200">
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-4xl border border-gray-200 transform transition-all duration-500">
+            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-6xl border border-gray-200 transform transition-all duration-500">
                 <div className="md:flex md:space-x-6">
                     {/* Left Column */}
                     <div className="md:w-2/5 mb-6 md:mb-0 flex flex-col">
