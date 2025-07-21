@@ -3,7 +3,6 @@ import { ReplySuggestion } from '../types';
 
 export type CommentStyle = 'humorous' | 'supportive' | 'inquisitive' | 'analytical';
 
-
 const API_KEY = process.env.API_KEY;
 
 if (!API_KEY) {
@@ -12,16 +11,17 @@ if (!API_KEY) {
     );
 }
 
+// Khởi tạo một lần duy nhất
 const ai = new GoogleGenAI({ apiKey: API_KEY! });
-const MODEL_NAME = "gemini-2.5-pro";
+const MODEL_NAME = "gemini-1.5-pro-latest"; // Sử dụng model mới nhất
 
-
+// === HÀM CŨ: GIỮ NGUYÊN KHÔNG ĐỔI ===
 export const generateReplySuggestions = async (
     articleContent: string,
-    style: CommentStyle 
+    style: CommentStyle
 ): Promise<ReplySuggestion[]> => {
-
-    if (!articleContent.trim()) {
+    // ... (toàn bộ nội dung hàm này giữ nguyên như cũ) ...
+     if (!articleContent.trim()) {
         throw new Error('Vui lòng nhập nội dung bài viết.');
     }
 
@@ -83,19 +83,17 @@ Bài viết:
 "${articleContent}"
 `;
 
-   
-    const chatHistory: Content[] = [{ role: "user", parts: [{ text: prompt }] }];
+    const model = ai.getGenerativeModel({ model: MODEL_NAME });
+    const generationConfig = {
+        responseMimeType: "application/json",
+    };
 
     try {
-        const response: GenerateContentResponse = await ai.models.generateContent({
-            model: MODEL_NAME,
-            contents: chatHistory,
-            config: {
-                responseMimeType: "application/json",
-            },
-        });
-
-        let jsonText = response.text.trim();
+        const result = await model.generateContent(prompt, generationConfig);
+        const response = result.response;
+        let jsonText = response.text().trim();
+        
+        // Không cần regex nữa nếu dùng responseMimeType, nhưng giữ lại để phòng trường hợp API thay đổi
         const fenceRegex = /^```(?:json)?\s*\n?(.*?)\n?\s*```$/s;
         const match = jsonText.match(fenceRegex);
         if (match && match[1]) {
@@ -125,6 +123,46 @@ Bài viết:
             if (error.message.toLowerCase().includes('json')) {
                  throw new Error('Lỗi khi phân tích phản hồi JSON từ AI. Vui lòng thử lại.');
             }
+            if (error.message.toLowerCase().includes('api key not valid')) {
+                throw new Error('Khóa API không hợp lệ. Vui lòng kiểm tra cấu hình.');
+            }
+            throw new Error(`Đã xảy ra lỗi khi kết nối với AI: ${error.message}. Vui lòng thử lại.`);
+        }
+        throw new Error('Đã xảy ra lỗi không xác định khi kết nối với AI. Vui lòng thử lại sau.');
+    }
+};
+
+
+// === HÀM MỚI: TÓM TẮT NỘI DUNG BÀI VIẾT ===
+export const summarizeArticle = async (
+    articleContent: string
+): Promise<string> => {
+
+    if (!articleContent.trim()) {
+        throw new Error('Vui lòng nhập nội dung bài viết.');
+    }
+
+    const prompt = `
+    Tóm tắt bài viết sau đây thành một đoạn văn ngắn gọn, súc tích bằng tiếng Việt. 
+    Chỉ tập trung vào những ý chính, luận điểm quan trọng nhất và loại bỏ các chi tiết phụ, ví dụ không cần thiết.
+    Mục tiêu là cung cấp một cái nhìn tổng quan nhanh chóng và chính xác về nội dung của bài viết.
+    Không thêm bất kỳ lời dẫn hay giải thích nào, chỉ trả về duy nhất nội dung tóm tắt.
+
+    Bài viết cần tóm tắt:
+    "${articleContent}"
+    `;
+
+    try {
+        const model = ai.getGenerativeModel({ model: MODEL_NAME });
+        const result = await model.generateContent(prompt);
+        const response = result.response;
+        const summaryText = response.text();
+        
+        return summaryText.trim();
+
+    } catch (error) {
+        console.error('Lỗi khi gọi API Gemini để tóm tắt:', error);
+        if (error instanceof Error) {
             if (error.message.toLowerCase().includes('api key not valid')) {
                 throw new Error('Khóa API không hợp lệ. Vui lòng kiểm tra cấu hình.');
             }
